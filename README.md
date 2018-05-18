@@ -19,4 +19,151 @@ nodes_tags|1.6
 ways_nodes|13.7
 ways_tags|10.4
 
+## Data Wrangling
 
+I have repurposed the code from Udacity assigments for the analysis. I have used a map for streamlining the adress notations.
+
+```
+# Address Mapping
+mapping = { "St": "Street",
+            "St.": "Street",
+            "Rd.": "Road",
+            "Ave": "Avenue",
+            "street":"Street"
+            }
+
+```
+Also have to set the encoding to UTF-8 as I was getting errors while extracting the information from tags.
+
+```
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+```
+
+## DataSet Metrics
+
+SQLite 3 is used for querying and analysisng the extracted data. I have created a DB called **SanAntonioData.db** to store the data. Also used SQLiteStudio GUI to execute queries.
+
+### Query 1
+
+Amenities | Available Locations
+------------ | -------------
+place_of_worship|1708
+school	|482
+fast_food	|234
+restaurant	|232
+parking_entrance|	166
+bench	|142
+toilets	|100
+pharmacy	|94
+kindergarten	|70
+fuel|	66
+
+#### SQL Query:
+```
+-- Query
+```
+
+Eats | Favourites
+------------ | -------------
+burger	|96
+mexican	|52
+chicken	|34
+sandwich|	28
+american|	22
+pizza	|19
+regional|	14
+coffee_shop|	13
+chinese	|12
+barbecue|	9
+
+#### SQL Query:
+```
+-- Query
+```
+
+Sport | Favourites
+------------ | -------------
+baseball	|263
+tennis	|213
+soccer	|100
+basketball	|88
+american_football	|43
+softball	|31
+swimming	|21
+multi	|10
+volleyball	|8
+beachvolleyball	|5
+
+#### SQL Query:
+```
+-- Query
+```
+
+#### SQL Query:
+```
+-- Query
+```
+
+Offices | Types
+------------ | -------------
+company	|10
+insurance	|7
+lawyer	|6
+estate_agent|	4
+government	|2
+it	|2
+accountant	|1
+newspaper	|1
+pest_control|	1
+research	|1
+
+#### SQL Query:
+```
+-- Query
+```
+
+Sample Building | Types 
+------------ | -------------
+H-E-B Pharmacy|	33
+Kingdom Hall of Jehovahs Witnesses|	20
+Subway	|13
+Starbucks	|12
+Valero	|11
+James Avery Jewelry|	8
+Pizza Hut	|8
+Schlotzsky's Deli	|6
+Batteries Plus Bulbs|	5
+Church's Chicken	|5
+
+#### SQL Query:
+```
+-- Query
+```
+
+Shopping | Locations 
+------------ | -------------
+convenience	|77
+supermarket	|71
+car	|29
+car_repair	|26
+department_store|	22
+storage_rental	|19
+doityourself	|16
+art	|15
+electronics	|12
+furniture	12
+
+#### SQL Query:
+```
+-- Query
+```
+
+## Additional Improvements
+
+## References
+
+http://www.sqlitetutorial.net/sqlite-sample-database/
+https://wiki.openstreetmap.org/wiki/Map_Features#Tourism
+https://wiki.openstreetmap.org/wiki/Map_Features#Tourism
