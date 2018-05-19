@@ -225,6 +225,7 @@ LIMIT 10
 
 ## References
 
-* http://www.sqlitetutorial.net/sqlite-sample-database/
-* https://wiki.openstreetmap.org/wiki/Map_Features#Tourism
-* https://wiki.openstreetmap.org/wiki/Map_Features#Tourism
+* SQLite Tutorial http://www.sqlitetutorial.net/sqlite-sample-database/
+* Map Features https://wiki.openstreetmap.org/wiki/Map_Features#Tourism
+* Tags https://wiki.openstreetmap.org/wiki/Tags
+* Mastering Markdown https://guides.github.com/features/mastering-markdown/
