@@ -228,3 +228,5 @@ The openstreet map dataset can be a little more cleaner. The tage names for the 
 * Map Features https://wiki.openstreetmap.org/wiki/Map_Features#Tourism
 * Tags https://wiki.openstreetmap.org/wiki/Tags
 * Mastering Markdown https://guides.github.com/features/mastering-markdown/
+* Pragmatic Unicode https://nedbatchelder.com/text/unipain.html
+* https://markhneedham.com/blog/2015/05/21/python-unicodeencodeerror-ascii-codec-cant-encode-character-uxfc-in-position-11-ordinal-not-in-range128/
