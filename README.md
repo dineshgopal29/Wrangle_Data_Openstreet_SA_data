@@ -6,7 +6,6 @@ I have used San Antonio City map for the project. I have used a small subset of 
 https://www.openstreetmap.org/export#map=10/29.4587/-98.5178
 
 ## Datasize
-
 Below are the files extracted from the script and their corresponding sizes.
 
 File Name | Size(MB)
@@ -20,7 +19,6 @@ ways_nodes|13.7
 ways_tags|10.4
 
 ## Data Wrangling
-
 I have repurposed the code from Udacity assigments for the analysis. I have used a map for streamlining the adress notations.
 
 ```
@@ -33,6 +31,7 @@ mapping = { "St": "Street",
             }
 
 ```
+
 Also have to set the encoding to UTF-8 as I was getting errors while extracting the information from tags.
 
 ```
@@ -42,7 +41,6 @@ sys.setdefaultencoding('utf8')
 ```
 
 ## DataSet Metrics
-
 SQLite 3 is used for querying and analysisng the extracted data. I have created a DB called **SanAntonioData.db** to store the data. Also used SQLiteStudio GUI to execute queries.
 
 ### Total number of Users contributed for the dataset 
@@ -60,6 +58,7 @@ FROM (SELECT uid FROM nodes
 ```
 
 ### Top 10 Amenities
+Top ten amenities for the dataset.
 
 Amenities | Available Locations
 ------------ | -------------
@@ -222,8 +221,7 @@ LIMIT 10
 ```
 
 ## Additional Improvements
-The openstreet map dataset can be a little more cleaner. The tage names for the nodes are same for group tags and indidvidual items.
-
+The openstreet map dataset can be a little more cleaner. The tage names for the nodes are same for group nodes and indidvidual nodes.
 
 ## References
 * SQLite Tutorial http://www.sqlitetutorial.net/sqlite-sample-database/
