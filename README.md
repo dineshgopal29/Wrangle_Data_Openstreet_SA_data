@@ -222,9 +222,10 @@ LIMIT 10
 ```
 
 ## Additional Improvements
+The openstreet map dataset can be a little more cleaner. The tage names for the nodes are same for group tags and indidvidual items.
+
 
 ## References
-
 * SQLite Tutorial http://www.sqlitetutorial.net/sqlite-sample-database/
 * Map Features https://wiki.openstreetmap.org/wiki/Map_Features#Tourism
 * Tags https://wiki.openstreetmap.org/wiki/Tags
