@@ -191,7 +191,7 @@ Batteries Plus Bulbs|	5
 Church's Chicken	|5
 
 ### Top 10 Shopping Locations
-Favourite sports for the given dataset is Baseball with **263** mentions on the same.
+Favourite Shopping Locations for the given dataset.
 
 Shopping | Locations 
 ------------ | -------------
