@@ -204,7 +204,7 @@ storage_rental	|19
 doityourself	|16
 art	|15
 electronics	|12
-furniture	12
+furniture	|12
 
 #### SQL Query:
 ```
