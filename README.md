@@ -19,10 +19,14 @@ ways_nodes|13.7
 ways_tags|10.4
 
 ## Data Wrangling
-I have repurposed the code from Udacity assigments for the analysis. I have used a map for streamlining the adress notations.
+I have repurposed the code from Udacity assigments as a starter for the analysis. By briefly looking at the extracted data there are coiuple of data points which I have noticed that can be cleaned for consistencey purposes. As part of the analysis the following I have tried to cleanup the following data points.
+
+
+#### Street Names
+Street names on the dataset have a good variations of names and abbreviations. I have used the script below to update the names with the standard names ane abbreviaitons.
 
 ```
-# Address Mapping
+# Address Name Mapping
 mapping = { "St": "Street",
             "St.": "Street",
             "Rd.": "Road",
@@ -32,13 +36,48 @@ mapping = { "St": "Street",
 
 ```
 
-Also have to set the encoding to UTF-8 as I was getting errors while extracting the information from tags.
+Script used to update the names.
+```
+#Update Address Names 
+def update_name(name, mapping):
+    m = street_type_re.search(name)
+    if m:
+        street_type = m.group()
+        if street_type not in mapping.keys():
+            name = name.replace(street_type, mapping.get(street_type))
+    else:
+        return name
+    return name
+
+```
+
+#### UTF-8 Encoding
+I was getting errors while extracting the data from tag nodes as some of the them while extracting throwing encoding errors. I have set the encoding to UTF-8 in the script as 
 
 ```
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 ```
+
+#### Zip Codes
+Zipcodes on the address is the other datapoint I have tried to cleanup as part of the analysis. I have added a script to read the zipcodes that are greater than 5 digits and truncted the values to 5 digits.
+
+```
+# Zip Code correction
+                if 'zip' in t.attrib['k'] or 'postcode' in t.attrib['k']:
+                    zip = t.attrib['v']
+                    if (len(zip) > 5):
+                        zip = re.split('[;:-]', zip)
+                        print(len(zip))
+                        print(zip[0])
+                        print(zip[-1])
+                    else:
+                    if 'addr:street' in t.attrib['k']:
+                        print(t.attrib['v'])
+```
+
+
 
 ## DataSet Metrics
 SQLite 3 is used for querying and analysisng the extracted data. I have created a DB called **SanAntonioData.db** to store the data. Also used SQLiteStudio GUI to execute queries.
