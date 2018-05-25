@@ -338,7 +338,7 @@ The dataset would be helpful if it could capture more specific information to a 
 * The dataset has to be constantly updated with latest specifcs
 
 ## Conclusion
-As part of the project I was successfully able to extract a dataset, define questions and explore the data using data exploratory and wrangling techniques to anwser the questions. The project has helped me learn and think on how to anticipate and handle issues while cleaning up data and how to overcome the same.  It has also taought me the trick to think further beyond the data and help to improve the same.  
+As part of the project I was successfully able to extract a dataset, define questions and explore the data using data exploratory and wrangling techniques to anwser the questions. As part of the anaylysis I have encounterd some issues while celaning up the data and were able to handle issues to overcome the same.  Also provided suggestions to help to improve the dataset.  
 
 ## References
 * SQLite Tutorial http://www.sqlitetutorial.net/sqlite-sample-database/
