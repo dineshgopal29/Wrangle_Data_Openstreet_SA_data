@@ -70,7 +70,7 @@ Zipcode is an other datapoint I have tried to cleanup as part of my analysis. I 
 		    print(zip)
 ```
 
-Sample Output
+######Sample Output:
 
 ```
 78209
@@ -336,6 +336,9 @@ The dataset would be helpful if it could capture more specific information to a 
 #### Potential Issues
 * Capturing specific information on datapoint would require more contributions from the users
 * The dataset has to be constantly updated with latest specifcs
+
+## Conclusion
+As part of the project I was successfully able to extract a dataset, define questions and explore the data using data exploratory and wrangling techniques to anwser the questions. Also the project has helped me learn and to think on how to handle and anticaipate isseus wihile cleaning up data and how to overcome the same.  It has also taought me the trick to think further beyond the data and help to improve the same.  
 
 ## References
 * SQLite Tutorial http://www.sqlitetutorial.net/sqlite-sample-database/
