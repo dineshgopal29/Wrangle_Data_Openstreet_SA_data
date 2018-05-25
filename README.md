@@ -22,7 +22,7 @@ ways_tags|10.4
 I have repurposed the code from Udacity assigments as a code base for my analysis. By briefly looking at the extracted dataset there are couple of data points which I have noticed that can be cleaned for consistencey purposes. As part of my analysis I have tried to cleanup the data points below.
 
 
-#### Street Names
+#### * Street Names
 Street names on the dataset have a good variations of names and abbreviations. I have used the script and the name mapping dictionary below to update the names with the standard names ane abbreviaitons.
 
 ```
@@ -51,7 +51,7 @@ def update_name(name, mapping):
 
 ```
 
-#### UTF-8 Encoding
+#### * UTF-8 Encoding
 I was getting errors while extracting the data from tag nodes as some of the string characters while extracting were throwing encoding errors. I have used the sys library to set the default encoding as UTF-8 in the script to avoid such errors.
 
 ```
@@ -60,7 +60,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 ```
 
-#### Zip Codes
+#### * Zip Codes
 Zipcode is an other datapoint I have tried to cleanup as part of my analysis. I ran the script below to printout all the zipcodes in the dataset. 
 
 ```
