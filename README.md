@@ -52,7 +52,7 @@ def update_name(name, mapping):
 ```
 
 #### UTF-8 Encoding
-I was getting errors while extracting the data from tag nodes as some of the them while extracting throwing encoding errors. I have set the encoding to UTF-8 in the script as 
+I was getting errors while extracting the data from tag nodes as some of the string characters while extracting were throwing encoding errors. I have used the sys library to set the default encoding as UTF-8 in the script to avoid such errors.
 
 ```
 import sys
@@ -61,13 +61,30 @@ sys.setdefaultencoding('utf8')
 ```
 
 #### Zip Codes
-Zipcodes on the address is the other datapoint I have tried to cleanup as part of the analysis. I ran the script below to printout all the zipcodes in the dataset. Based on the output I noticed most of the zipcodes were all 5 digits. I further tweaked the code to get the list of zip codes from the dataset that are more than 5 digits long.  I have used the scritp below to get the list of variations.
-
-Some of the bad Zip code from the dataset were
+Zipcodes on the address is the other datapoint I have tried to cleanup as part of the analysis. I ran the script below to printout all the zipcodes in the dataset. 
 
 ```
-['78208; 78218', '78208; 78218', '78251-2101', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78230-1898', '78208; 78218', '78208; 78218', '78229-3322', '78238-9998', '78222-1345']
+# Zip Code correction
+                if 'zip' in t.attrib['k'] or 'postcode' in t.attrib['k']:
+                    zip = t.attrib['v']
+		    print(zip)
 ```
+
+Sample Output
+
+```
+78209
+78209
+78209
+78209
+78208; 78218
+78208; 78218
+78245
+78216
+78244
+78227
+```
+Based on the output I noticed most of the zipcodes were all 5 digits. I further tweaked the code to get the list of zip codes from the dataset that are more than 5 digits long.  I have used the scritp below to get the list of variations. 
 
 ```
 audit_zips = []
@@ -76,6 +93,12 @@ audit_zips = []
                     zip = t.attrib['v']
                     if (len(zip) > 5):
                         audit_zips.append(zip)
+```
+
+Some of the bad Zip codes from the dataset were as below
+
+```
+['78208; 78218', '78208; 78218', '78251-2101', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78230-1898', '78208; 78218', '78208; 78218', '78229-3322', '78238-9998', '78222-1345']
 ```
 
 Based on the output I have decided to exculde the portions of the zipcode that were followed by some special characters to simplify the cleanup prcess. WIth the help of regex I was able to perform the cleanup. Below line of code splits the zip based on the special characters.
