@@ -174,7 +174,7 @@ ORDER BY "Available Locations" DESC
 LIMIT 10
 ```
 ### Top 10 Favourite Eats
-Burger looks like the favourite cusines for the dataset under consideration
+Burger looks like the favorite cusines for the dataset under consideration
 
 Eats | Favourites
 ------------ | -------------
@@ -191,7 +191,7 @@ barbecue|	9
 
 #### SQL Query:
 ```
-SELECT value AS "Eats", COUNT(*) AS "Favourites"
+SELECT value AS "Eats", COUNT(*) AS "Favorites"
 FROM	(SELECT *
 	FROM nodes_tags
 	UNION ALL
@@ -199,13 +199,13 @@ FROM	(SELECT *
 	FROM nodes_tags) as t
 WHERE key = 'cuisine'
 GROUP BY value
-ORDER BY "Favourites" DESC
+ORDER BY "Favorites" DESC
 LIMIT 10
 ```
-### Top 10 Favourite Sports
+### Top 10 Favorite Sports
 Favourite sports for the given dataset is Baseball with **263** mentions on the same.
 
-Sport | Favourites
+Sport | Favorites
 ------------ | -------------
 baseball	|263
 tennis	|213
@@ -220,7 +220,7 @@ beachvolleyball	|5
 
 #### SQL Query:
 ```
-SELECT value AS "Sport", COUNT(*) AS "Favourites"
+SELECT value AS "Sport", COUNT(*) AS "Favorites"
 FROM	(SELECT *
 	FROM nodes_tags
 	UNION ALL
@@ -228,12 +228,12 @@ FROM	(SELECT *
 	FROM nodes_tags) as t
 WHERE key = 'sport'
 GROUP BY value
-ORDER BY "Favourites" DESC
+ORDER BY "Favorites" DESC
 LIMIT 10
 ```
 
 ### Top 10 Office Buildings
-Favourite office buildings for the given dataset
+Favorite office buildings for the given dataset
 
 Offices | Types
 ------------ | -------------
@@ -312,7 +312,7 @@ LIMIT 10
 The openstreet map dataset can be a little more cleaner. As the data is entered by users it could be a good idea if there were some kinda lookups for the zipcodes and address locations that could help maintain the dataset relavant and a little cleaner.
 
 #### More relavant and specific information for a datapoint
-The dataset has information that are generic to a location. Like for example we can get information like top types of aeroways in the dataset 
+The dataset has information that are generic to a location. For example we can get information like top types of aeroways in the dataset but not on any specific aeroways. 
 
 ```
 --SQL Query
@@ -332,14 +332,15 @@ Lackland Air Force Base (Kelly Field Annex)	|1
 Martindale Army Heliport	|1
 Stinson Municipal Airport	|1
 
-The dataset would be helpful if it could capture more specific information to a datapoint like for example if we want to dive deeper into specifics and would like to get metrics like most popular airlines in the dataset, number of passangers travelling at a given point of time we may not be able to do as we dont have enough information captured in the datset to do the same.
+The dataset would be helpful if it could capture specific information on a datapoint, for example if we want to dive deeper into specifics and would like to get metrics like most popular airlines in the dataset, number of passengers traveling at a given point of time we may not be able to do as we dont have enough information captured in the datset to do the same.
 
 #### Potential Issues
 * Capturing specific information on datapoint would require more contributions from the users
-* The dataset has to be constantly updated with latest specifcs
+* The dataset has to be constantly updated with latest infromation on the datapoint
+* It will increase the errors on the dataset 
 
 ## Conclusion
-As part of the project I was successfully able to extract a dataset, define questions and explore the data using data exploratory and wrangling techniques to anwser the questions. As part of the anaylysis I have encounterd some issues while celaning up the data and were able to handle issues to overcome the same.  Also provided suggestions to help to improve the dataset.  
+As part of the project I was successfully able to extract a dataset, define questions and explore the data using data exploratory and wrangling techniques to anwser the questions. As part of the anaylysis I have encounterd some issues while cleaning up the data and were able to handle issues to overcome the same. In addition to that I have provided suggestions to help to improve the dataset.  
 
 ## References
 * SQLite Tutorial http://www.sqlitetutorial.net/sqlite-sample-database/
