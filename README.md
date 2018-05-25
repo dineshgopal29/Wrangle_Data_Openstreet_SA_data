@@ -23,7 +23,7 @@ I have repurposed the code from Udacity assigments as a code base for my analysi
 
 
 #### Street Names
-Street names on the dataset have a good variations of names and abbreviations. I have used the script below to update the names with the standard names ane abbreviaitons.
+Street names on the dataset have a good variations of names and abbreviations. I have used the script and the name mapping dictionary below to update the names with the standard names ane abbreviaitons.
 
 ```
 # Address Name Mapping
@@ -36,7 +36,7 @@ mapping = { "St": "Street",
 
 ```
 
-Script used to update the names.
+Script used to update the street names below
 ```
 #Update Address Names 
 def update_name(name, mapping):
@@ -61,7 +61,7 @@ sys.setdefaultencoding('utf8')
 ```
 
 #### Zip Codes
-Zipcodes on the address is the other datapoint I have tried to cleanup as part of the analysis. I ran the script below to printout all the zipcodes in the dataset. 
+Zipcode is an other datapoint I have tried to cleanup as part of my analysis. I ran the script below to printout all the zipcodes in the dataset. 
 
 ```
 # Zip Code correction
