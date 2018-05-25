@@ -9,7 +9,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-OSM_PATH = "sa_map"
+OSM_PATH = "map_sample"
 
 
 NODES_PATH = "nodes.csv"
@@ -45,6 +45,8 @@ mapping = { "St": "Street",
             "street":"Street"
             }
 
+full_zips = []
+good_zips = [] # Postcodes outside of the defined area
 
 def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIELDS, problem_chars=PROBLEMCHARS,
                   default_tag_type='regular'):
@@ -68,9 +70,24 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
                 temp_tag["id"] = element.attrib['id']
                 temp_tag["key"] = t.attrib['k'].split(":", 1)[1]
                 temp_tag["type"] = t.attrib['k'].split(":", 1)[0]
+
+                # Zip Code correction
+                if 'zip' in t.attrib['k'] or 'postcode' in t.attrib['k']:
+                    zip = t.attrib['v']
+                    if (len(zip) > 5):
+                        #bad_zips.append(zip)
+                        zip = re.split('[;:-]', zip)
+                        t.attrib['v'] = zip[0]
+                        #print(len(zip))
+                        #print(zip[0])
+                        #print(zip[-1])
+                    else:
+                        t.attrib['v']
+
+                #Address Names
                 if t.attrib["k"] == 'addr:street' and t.attrib["k"] != '':
                     print(str(t.attrib["v"]))
-                    temp_tag["value"] = update_name(str(t.attrib["v"].encode('utf-8')).strip(), mapping)
+                    temp_tag["value"] = update_name(str(t.attrib["v"]).replace("`", "").encode('utf8').strip(), mapping)
                     temp_tag["type"] = t.attrib['k'].split(":", 1)[0]
                 else:
                     temp_tag["value"] = t.attrib["v"]
@@ -81,12 +98,10 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
                 temp_tag["key"] = t.attrib['k']
                 temp_tag["value"] = t.attrib['v']
                 temp_tag["type"] = default_tag_type
-                #if temp_tag["key"] == 'phone':
-                    #temp_tag["value"] = isPhoneNumber(t.attrib["v"])
-                    #print(temp_tag["value"])
             tags.append(temp_tag)
         print({"node": node_attribs, "node_tags": tags})
         return {'node': node_attribs, 'node_tags': tags}
+
     elif element.tag == 'way':
         count = 0
         for a in element.attrib:
@@ -100,8 +115,23 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
                 temp_tag["id"] = element.attrib['id']
                 temp_tag["key"] = t.attrib['k'].split(":",1)[1]
                 temp_tag["type"] = t.attrib['k'].split(":",1)[0]
+
+                # Zip Code correction
+                if 'zip' in t.attrib['k'] or 'postcode' in t.attrib['k']:
+                    zip = t.attrib['v']
+                    if (len(zip) > 5):
+                        #full_zips.append(zip)
+                        zip = re.split('[;:-]', zip)
+                        t.attrib['v'] = zip[0]
+                        #print(len(zip))
+                        #print(zip[0])
+                        #print(zip[-1])
+                    else:
+                        t.attrib['v']
+
+                 #Address Names
                 if t.attrib["k"] == 'addr:street' and t.attrib["k"] != '':
-                    temp_tag["value"] = update_name(str(t.attrib["v"]), mapping)
+                    temp_tag["value"] = update_name(str(t.attrib["v"]).replace("`", "").encode('utf8').strip(), mapping)
                     temp_tag["type"] = t.attrib['k'].split(":", 1)[0]
                 else:
                     temp_tag["value"] = t.attrib["v"]
@@ -217,3 +247,4 @@ if __name__ == '__main__':
     # Note: Validation is ~ 10X slower. For the project consider using a small
     # sample of the sa_map when validating.
     process_map(OSM_PATH, validate=True)
+    #print(set(types))
