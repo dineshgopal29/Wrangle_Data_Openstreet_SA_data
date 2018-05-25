@@ -98,6 +98,7 @@ audit_zips = []
 Some of the bad Zip codes from the dataset were as below
 
 ```
+#Before Cleanup
 ['78208; 78218', '78208; 78218', '78251-2101', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78230-1898', '78208; 78218', '78208; 78218', '78229-3322', '78238-9998', '78222-1345']
 ```
 
@@ -121,7 +122,7 @@ Modified code to capture the cleaned up zip codes.
 After the cleanup process the zipcodes looked lot cleaner and aligned to the most of the zipcodes in the datapoints. 
 
 ```
-#After cleanup
+#After Cleanup
 ['78208', '78208', '78251', '78208', '78208', '78208', '78208', '78208', '78208', '78208', '78208', '78230', '78208', '78208', '78229', '78238', '78222']
 ````
 
