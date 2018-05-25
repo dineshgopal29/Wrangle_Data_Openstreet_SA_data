@@ -19,7 +19,7 @@ ways_nodes|13.7
 ways_tags|10.4
 
 ## Data Wrangling
-I have repurposed the code from Udacity assigments as a starter for the analysis. By briefly looking at the extracted data there are coiuple of data points which I have noticed that can be cleaned for consistencey purposes. As part of the analysis the following I have tried to cleanup the following data points.
+I have repurposed the code from Udacity assigments as a code base for my analysis. By briefly looking at the extracted dataset there are couple of data points which I have noticed that can be cleaned for consistencey purposes. As part of my analysis I have tried to cleanup the data points below.
 
 
 #### Street Names
