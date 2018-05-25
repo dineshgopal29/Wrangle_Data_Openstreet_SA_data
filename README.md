@@ -61,23 +61,46 @@ sys.setdefaultencoding('utf8')
 ```
 
 #### Zip Codes
-Zipcodes on the address is the other datapoint I have tried to cleanup as part of the analysis. I have added a script to read the zipcodes that are greater than 5 digits and truncted the values to 5 digits.
+Zipcodes on the address is the other datapoint I have tried to cleanup as part of the analysis. I ran the script below to printout all the zipcodes in the dataset. Based on the output I noticed most of the zipcodes were all 5 digits. I further tweaked the code to get the list of zip codes from the dataset that are more than 5 digits long.  I have used the scritp below to get the list of variations.
+
+Some of the bad Zip code from the dataset were
 
 ```
+['78208; 78218', '78208; 78218', '78251-2101', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78208; 78218', '78230-1898', '78208; 78218', '78208; 78218', '78229-3322', '78238-9998', '78222-1345']
+```
+
+```
+audit_zips = []
 # Zip Code correction
                 if 'zip' in t.attrib['k'] or 'postcode' in t.attrib['k']:
                     zip = t.attrib['v']
                     if (len(zip) > 5):
-                        zip = re.split('[;:-]', zip)
-                        print(len(zip))
-                        print(zip[0])
-                        print(zip[-1])
-                    else:
-                    if 'addr:street' in t.attrib['k']:
-                        print(t.attrib['v'])
+                        audit_zips.append(zip)
 ```
 
+Based on the output I have decided to exculde the portions of the zipcode that were followed by some special characters to simplify the cleanup prcess. WIth the help of regex I was able to perform the cleanup. Below line of code splits the zip based on the special characters.
 
+```
+# Regex Script to split the zipcodes based on the special characters.
+zip = re.split('[;:-]', zip)
+```
+Modified code to capture the cleaned up zip codes.
+
+```
+            if 'zip' in elem.attrib['k'] or 'postcode' in elem.attrib['k']:
+                zip = elem.attrib['v']
+                if(len(zip) > 5):
+                    audit_zips.append(zip)
+                    zip = re.split('[;:-]', zip)
+                    clean_zips.append(zip[0])
+```
+
+After the cleanup process the zipcodes looked lot cleaner and aligned to the most of the zipcodes in the datapoints. 
+
+```
+#After cleanup
+['78208', '78208', '78251', '78208', '78208', '78208', '78208', '78208', '78208', '78208', '78208', '78230', '78208', '78208', '78229', '78238', '78222']
+````
 
 ## DataSet Metrics
 SQLite 3 is used for querying and analysisng the extracted data. I have created a DB called **SanAntonioData.db** to store the data. Also used SQLiteStudio GUI to execute queries.
