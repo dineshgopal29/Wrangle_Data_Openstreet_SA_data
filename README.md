@@ -306,7 +306,36 @@ LIMIT 10
 ```
 
 ## Additional Improvements
-The openstreet map dataset can be a little more cleaner. The tage names for the nodes are same for group nodes and indidvidual nodes.
+
+#### Data Lookups for Zipcodes and Locations
+The openstreet map dataset can be a little more cleaner. As the data is entered by users it could be a good idea if there were some kinda lookups for the zipcodes and address locations that could help maintain the dataset relavant and a little cleaner.
+
+#### More relavant and specific information for a datapoint
+The dataset has information that are generic to a location. Like for example we can get information like top types of aeroways in the dataset 
+
+```
+--SQL Query
+SELECT ways_tags.value, COUNT(*) as number FROM ways_tags 
+JOIN (SELECT DISTINCT(id) FROM ways_tags WHERE key='aeroway' and value = 'aerodrome') as airways 
+ON ways_tags.id = airways.id 
+WHERE ways_tags.key = "name" 
+GROUP BY ways_tags.value 
+ORDER BY number DESC LIMIT 10;
+
+```
+###### Top Aerowyas in the dataset
+Aeroway | Count
+------------ | -------------
+Horizon Airport	|1
+Lackland Air Force Base (Kelly Field Annex)	|1
+Martindale Army Heliport	|1
+Stinson Municipal Airport	|1
+
+The dataset would be helpful if it could capture more specific information to a datapoint like for example if we want to dive deeper into specifics and would like to get metrics like most popular airlines in the dataset, number of passangers travelling at a given point of time we may not be able to do as we dont have enough information captured in the datset to do the same.
+
+#### Potential Issues
+* Capturing specific information on datapoint would require more contributions from the users
+* The dataset has to be constantly updated with latest specifcs
 
 ## References
 * SQLite Tutorial http://www.sqlitetutorial.net/sqlite-sample-database/
