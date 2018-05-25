@@ -1,7 +1,7 @@
 # Wrangle OpenStreetMap Data - Project 4 Udacity
 
 ## DataSet
-I have used San Antonio City map for the project. I have used a small subset of the map for analysis.
+I have chosen the San Antonio City map for the project. I have used a small subset of the map for analysis.
 
 https://www.openstreetmap.org/export#map=10/29.4587/-98.5178
 
